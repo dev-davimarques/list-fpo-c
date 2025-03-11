@@ -1,0 +1,21 @@
+1 - Composta por 4 etapas
+    1 - Pré-processamento: Pré-processamento remove comentários do código, inclui arquivos de cabeçalho, substitui variáveis de macro por seus valores, etc;
+    2 - Compilação: Análise sintática e semântica da unidade de compilação;
+    3 - Montagem: Geração do código-objeto;
+    4 - Ligação: Codigo executável.
+
+2 - a-> gcc prog.c -o prog
+        Compila o programa prog.c e gera um executável prog.exe (windows) prog.out(linux)
+
+    b-> gcc prog.c
+        Compila e gera um executável padrão a.exe (windows) a.out(linux)
+
+    c-> gcc prog.c -o aux.c entsai.c
+        Erro de compilação, pois não se deve passar o arquivo como .c novamente
+
+    d-> gcc progA.c progB.o
+        Erro de compilação, arquivo ou diretório não encontrado
+
+3 - A linguagem C suporta dois tipos de comentários: comentários de linha única e comentários de várias linhas.
+    Uma linha: //
+    Várias linhas: /*Código*/
