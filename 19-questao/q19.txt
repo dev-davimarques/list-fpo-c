@@ -1,0 +1,11 @@
+Primeiro printf
+a -> 4, b -> 5.7
+
+Segundo printf
+c -> 3, d -> 6
+
+Terceiro printf
+a -> 2, b -> 9
+
+Quarto printf
+c -> 3, d -> 6

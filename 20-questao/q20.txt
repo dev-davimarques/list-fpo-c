@@ -1,0 +1,6 @@
+No caso de digitar 6, o programa retornará dois resultados:
+num. positivo
+num. menor que 10
+
+No cade de digtar -6, o programa retornará um resultado:
+num. menor que 10

@@ -1,0 +1,13 @@
+18. Identifique e corrija os erros em cada uma das seguintes instruções:
+
+a-> printf("O valor  ́e %d", &numero);
+    printf("O valor é %d",numero); // Corrigido
+
+b-> scanf("%d%d", &numero1, numero2);
+    scanf("%d%d", &numero1, &numero2); // Corrigido
+
+c-> printf("A soma  ́e %d \n,"x+y);
+    printf("A soma  ́e %d \n,",x+y); // Corrigido
+
+d-> scanf("d", valor);
+    scanf("%d", &valor); // Corrigido
