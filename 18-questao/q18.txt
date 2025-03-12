@@ -7,7 +7,7 @@ b-> scanf("%d%d", &numero1, numero2);
     scanf("%d%d", &numero1, &numero2); // Corrigido
 
 c-> printf("A soma  ́e %d \n,"x+y);
-    printf("A soma  ́e %d \n,",x+y); // Corrigido
+    printf("A soma  ́e %d \n",x+y); // Corrigido
 
 d-> scanf("d", valor);
     scanf("%d", &valor); // Corrigido
