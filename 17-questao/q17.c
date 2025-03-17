@@ -38,4 +38,5 @@ int main() {
     return 0;
 }
 
+
 // gcc q17.c -o q17.out -lm
