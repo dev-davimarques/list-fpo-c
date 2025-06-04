@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 // Define uma variável constante, com o número máximo de clientes que podem ser armazenado no array
 #define MAX_CLIENTES 50
@@ -8,16 +9,16 @@
 // Estrutura para armazenar os dados do cliente
 typedef struct
 {
-    int codigo;
-    char nome[100];
+    int cod;
+    char name[100];
     char email[100];
-    char endereco[100];
-    int idade;
-} Cliente;
+    char address[100];
+    int age;
+} Client;
 
 // Array global para armazenar os clientes e contador
-Cliente clientes[MAX_CLIENTES];
-int totalClientes = 0;
+Client clientes[MAX_CLIENTES];
+int allClients = 0;
 
 // Protótipos das funções
 void exibirMenu();
@@ -25,16 +26,18 @@ void adicionarCliente();
 void listarClientes();
 void buscarCliente();
 
-int main(){
-    int opcao;
+int main()
+{
+    setlocale(LC_ALL, "Portuguese");
+    int option;
 
     do
     {
         exibirMenu();
-        scanf("%d", &opcao);
-        while (getchar() != '\n'); // Limpa todo o buffer do teclado
+        scanf("%d", &option);
+        getchar(); // Limpa o buffer do teclado
 
-        switch (opcao)
+        switch (option)
         {
         case 1:
             adicionarCliente();
@@ -48,14 +51,10 @@ int main(){
         default:
             printf("Opção inválida! Tente novamente.\n");
         }
+        printf("\nPressione Enter para continuar...");
+        getchar();
 
-        if (opcao != 0) // Só pede "Pressione Enter" se não for sair
-        {
-            printf("\nPressione Enter para continuar...");
-            while (getchar() != '\n'); // Limpa o buffer e espera Enter
-        }
-
-    } while (opcao != 0); // Corrigido: agora sai quando opcao == 0
+    } while (option != 0);
 
     return 0;
 }
@@ -70,40 +69,62 @@ void exibirMenu()
     printf("2 - Listar Clientes\n");
     printf("0 - Sair\n");
     printf("==================================\n");
-    printf("Escolha uma opcao: ");
+    printf("Escolha uma opção: ");
 }
 
 void adicionarCliente()
 {
-    Cliente cliente;
-    char buffer[100]; // Buffer temporário para leitura
-    
+    if (allClients >= MAX_CLIENTES){
+        printf("Total de cadastros atingidos! \n");
+        return;
+    }
+
+    // instancia minha estrutura
+    Client newClient;
+
     printf("Código: ");
-    fgets(buffer, sizeof(buffer), stdin);
-    cliente.codigo = atoi(buffer);
-    
+    scanf("%d", &newClient.cod);
+    getchar();
+
     printf("Nome: ");
-    fgets(cliente.nome, sizeof(cliente.nome), stdin);
-    
+    fgets(newClient.name, sizeof(newClient.name), stdin);
+    newClient.name[strcspn(newClient.name, "\n")] = 0;
+
     printf("Email: ");
-    fgets(cliente.email, sizeof(cliente.email), stdin);
-    
-    printf("Endereco: ");
-    fgets(cliente.endereco, sizeof(cliente.endereco), stdin);
-    
+    fgets(newClient.email, sizeof(newClient.email), stdin);
+    newClient.email[strcspn(newClient.email, "\n")] = 0;
+
+    printf("Endereço: ");
+    fgets(newClient.address, sizeof(newClient.address), stdin);
+    newClient.address[strcspn(newClient.address, "\n")] = 0;
+
     printf("Idade: ");
-    fgets(buffer, sizeof(buffer), stdin);
-    cliente.idade = atoi(buffer);
+    scanf("%d", &newClient.age);
+    getchar();
+
+    clientes[allClients++] = newClient;
+
 }
 
 void listarClientes()
 {
-    // Implementar a lógica de listagem aqui...
-    printf("Função 'listarClientes' a ser implementada.\n");
+    if(allClients == 0){
+        printf("Nenhum cliente encontrado! \n");
+    } else {
+        printf("======== Lista de Clientes ========\n");
+        for(int i = 0; i < allClients; i++){
+            printf("---------------------------------------\n");
+            printf("Código: %d\n",clientes[i].cod);
+            printf("Nome: %s\n",clientes[i].name);
+            printf("Email: %s\n",clientes[i].email);
+            printf("Endereço: %s\n",clientes[i].address);
+            printf("Idade: %d\n",clientes[i].age);
+        }
+    }
 }
 
-void buscarCliente()
-{
-    // Implementar a lógica de busca aqui...
-    printf("Função 'buscarCliente' a ser implementada.\n");
-}
+// void buscarCliente()
+// {
+//     // Implementar a lógica de busca aqui...
+//     printf("Função 'buscarCliente' a ser implementada.\n");
+// }
