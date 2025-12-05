@@ -72,7 +72,6 @@ void add(Lista *l, char caractere) {
     l->inicio = e;
     l->tamanho++;
 
-    // Zera o elemento corrente porque o início mudou
     l->elemento_corrente = NULL;
 }
 
@@ -83,7 +82,6 @@ void add_pos(Lista *l, char caractere, int posicao) {
         return;
     }
 
-    // Inserir no início
     if (posicao == 1) {
         add(l, caractere);
         return;
@@ -95,7 +93,6 @@ void add_pos(Lista *l, char caractere, int posicao) {
         atual = atual->proximo;
     }
 
-    // atual aponta para o nó anterior
     Elemento *novo = malloc(sizeof(Elemento));
     novo->valor = caractere;
     novo->anterior = atual;
@@ -123,7 +120,6 @@ char get(Lista *l, int posicao) {
         return '\0';
     }
 
-    // Primeiro acesso → inicializa o corrente
     if (l->elemento_corrente == NULL) {
         l->elemento_corrente = l->inicio;
         l->posicao_corrente = 1;
@@ -160,7 +156,7 @@ void set(Lista *l, char caractere, int posicao) {
         return;
     }
 
-    char dummy = get(l, posicao); // Reaproveita lógica do get()
+    char dummy = get(l, posicao);
     (void)dummy;
 
     l->elemento_corrente->valor = caractere;
